@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a0c">
+<title>NHQM</title>
+<style>
+:root{color-scheme:dark;--ink:#f5f5f6;--soft:#b7b9bf;--line:rgba(255,255,255,.19);--glass:rgba(13,15,18,.63)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:#090a0c;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-2%;z-index:-2;background:url("/Photos/BANNER.PNG") center/cover no-repeat;filter:grayscale(1) brightness(.66);transform:scale(1.02)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(3,4,6,.35) 0%,rgba(5,6,8,.34) 35%,rgba(5,6,8,.77) 100%),radial-gradient(ellipse at center,transparent 12%,rgba(0,0,0,.56) 100%)}
+a{color:inherit;text-decoration:none}
+.shell{width:min(1500px,calc(100% - 48px));margin:auto;padding:26px 0 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-size:24px;letter-spacing:5px;font-weight:950;text-shadow:0 0 28px #fff5}
+.brand small{display:block;font-size:9px;font-weight:600;letter-spacing:3.5px;color:#d1d2d5;margin-top:4px}
+.nav{display:flex;gap:8px;padding:6px;background:rgba(9,10,12,.47);border:1px solid var(--line);border-radius:999px;backdrop-filter:blur(18px)}
+.nav a{padding:11px 20px;font-size:11px;font-weight:800;letter-spacing:1.3px;border-radius:999px;transition:.2s}
+.nav a:hover,.nav a:first-child{background:rgba(255,255,255,.16)}
+.hero{min-height:415px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:65px 0 42px}
+.kicker{font-size:10px;letter-spacing:6px;color:#d5d6d9;font-weight:700}
+.hero h1{font-size:clamp(72px,12vw,170px);letter-spacing:clamp(6px,1.8vw,24px);line-height:1.05;margin:14px 0 0;font-weight:950;color:#f0f0f2;text-shadow:0 4px 0 #76787d,0 11px 20px #000,0 0 65px #ffffff6a}
+.hero p{margin:18px 0 29px;letter-spacing:6px;font-size:11px;color:#e1e1e3}
+.actions{display:flex;gap:13px;flex-wrap:wrap;justify-content:center}
+.btn{border:1px solid #fff6;cursor:pointer;border-radius:11px;padding:14px 23px;font-size:12px;font-weight:900;letter-spacing:.7px;color:#161719;background:linear-gradient(145deg,#fff,#b4b6bb 65%,#777a80);box-shadow:inset 0 1px 2px #fff,0 5px 0 #66686d,0 13px 27px #0008;transition:transform .2s,filter .2s,box-shadow .2s}
+.btn:hover:not(:disabled){transform:translateY(-3px);filter:brightness(1.12)}
+.btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px 0 #66686d}
+.btn.dark{background:linear-gradient(145deg,#45474d,#101114);color:#f7f7f7;border-color:#ffffff38;box-shadow:inset 0 1px 1px #fff3,0 5px 0 #08090b,0 13px 27px #0008}
+.btn:disabled{opacity:.43;cursor:not-allowed;filter:grayscale(1)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:0 0 47px}
+.stat{display:flex;align-items:center;gap:15px;min-height:98px;padding:19px 22px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(56,59,65,.45),rgba(9,10,12,.7));backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 #fff2,0 15px 32px #0005}
+.symbol{display:grid;place-items:center;flex-shrink:0;width:50px;height:50px;border-radius:16px;background:linear-gradient(145deg,#eceef0,#84868d 45%,#33353b);box-shadow:inset 2px 2px 3px #fff9,inset -3px -3px 7px #0007,0 7px 0 #191a1d,0 12px 17px #0008}
+.symbol svg{width:26px;height:26px;stroke:#1d1e21;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.stat strong{display:block;font-size:32px;line-height:1.1}
+.stat span{display:block;margin-top:5px;font-size:10px;letter-spacing:1.4px;color:#c0c2c6}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:0 0 20px}
+.section-head h2{font-size:13px;letter-spacing:4px;margin:0;text-shadow:0 2px 10px #000}
+.section-head small{font-size:10px;letter-spacing:1.5px;color:#c8c9cc}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:19px}
+.card{min-width:0;overflow:hidden;border:1px solid #ffffff45;border-radius:19px;background:linear-gradient(155deg,rgba(48,50,55,.62),rgba(7,8,10,.88));backdrop-filter:blur(22px);box-shadow:inset 0 1px 0 #fff3,0 20px 45px #0009;transition:transform .3s,border-color .3s,box-shadow .3s;animation:rise .55s ease both}
+.card:hover{transform:translateY(-6px);border-color:#ffffffa0;box-shadow:0 26px 60px #000b,0 0 25px #fff1}
+.card-visual{height:132px;position:relative;background:linear-gradient(180deg,transparent,rgba(0,0,0,.6)),url("/Photos/BANNER.PNG") center/cover no-repeat;filter:grayscale(1)}
+.card-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(5,6,8,.65))}
+.card-number{position:absolute;top:14px;left:17px;z-index:1;font-size:10px;letter-spacing:2px;color:#fff}
+.card-body{padding:19px 20px 22px}
+.card-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card-title h3{margin:0;font-size:19px;overflow-wrap:anywhere}
+.status{display:inline-flex;align-items:center;gap:6px;border:1px solid #ffffff36;border-radius:99px;background:#ffffff15;padding:7px 10px;font-size:10px;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:#eee;box-shadow:0 0 10px #fff9}
+.status.offline .dot{background:#72757b;box-shadow:none}
+.song{margin:18px 0 14px;min-height:49px}
+.song strong{font-size:13px;line-height:1.5;display:block;overflow-wrap:anywhere}
+.song small{display:block;color:#aeb0b5;font-size:11px;margin-top:5px;overflow-wrap:anywhere}
+.details{display:grid;gap:9px;padding:14px 0;border-top:1px solid #ffffff23}
+.detail{display:flex;justify-content:space-between;gap:9px;font-size:10px}
+.detail span:first-child{color:#aeb0b5;letter-spacing:1px}
+.detail span:last-child{text-align:right;overflow-wrap:anywhere;max-width:64%}
+.track{height:5px;background:#56585d;border-radius:99px;overflow:hidden;margin:13px 0 9px}
+.track span{display:block;height:100%;background:linear-gradient(90deg,#96989e,#fff);border-radius:inherit}
+.volume{display:flex;justify-content:space-between;color:#c5c6c9;font-size:10px;margin-bottom:18px}
+.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.card-actions .btn{padding:12px 8px}
+.empty{grid-column:1/-1;padding:40px;text-align:center;border:1px solid var(--line);background:var(--glass);border-radius:17px}
+.notice{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:calc(100% - 30px);padding:12px 20px;background:#202226;border:1px solid #fff5;border-radius:12px;box-shadow:0 10px 40px #000b;color:#fff;font-size:12px;transition:.25s;z-index:10}
+.notice.show{opacity:1;transform:translate(-50%,0)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:360px}}
+@media(max-width:570px){.shell{width:calc(100% - 26px);padding-top:17px}.brand{font-size:19px}.nav a{padding:10px 12px;font-size:9px}.hero{min-height:315px;padding:50px 0 30px}.hero p{letter-spacing:3px}.stats{gap:10px}.stat{padding:14px 12px;gap:10px;min-height:83px}.stat strong{font-size:25px}.stat span{font-size:9px}.symbol{width:41px;height:41px;border-radius:12px}.symbol svg{width:22px;height:22px}.actions .btn{padding:13px 14px;font-size:10px}.section-head h2{letter-spacing:2px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="top">
+    <a class="brand" href="#home">NHQM<small>MUSIC CONTROL</small></a>
+    <nav class="nav" aria-label="Navigation"><a href="#home">HOME</a><a href="#bots">BOTS</a></nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="kicker">THE NEXT GENERATION OF MUSIC</div>
+    <h1>NHQM</h1>
+    <p>MULTI-BOT MUSIC CONTROL</p>
+    <div class="actions">
+      <button class="btn" id="startAll" type="button">▶ START ALL BOTS</button>
+      <button class="btn dark" id="stopAll" type="button">■ STOP ALL BOTS</button>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Bot statistics">
+    <div class="stat"><div class="symbol"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 13h.01M16 13h.01M9 17h6"/></svg></div><div><strong id="total">—</strong><span>TOTAL BOTS</span></div></div>
+    <div class="stat"><div class="symbol"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></div><div><strong id="online">—</strong><span>ONLINE</span></div></div>
+    <div class="stat"><div class="symbol"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg></div><div><strong id="offline">—</strong><span>OFFLINE</span></div></div>
+    <div class="stat"><div class="symbol"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div><strong id="playing">—</strong><span>ACTIVE TRACKS</span></div></div>
+  </section>
+
+  <section id="bots">
+    <div class="section-head"><h2>BOT NETWORK</h2><small id="updated">CONNECTING...</small></div>
+    <div class="grid" id="grid"><div class="empty">Loading bots...</div></div>
+  </section>
+</main>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+const grid = document.getElementById("grid");
+const notice = document.getElementById("notice");
+let busy = false;
+let noticeTimeout;
+const esc = v => String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const stamp = () => new Date().toLocaleTimeString("en-GB",{hour12:false});
+function showNotice(message){
+  notice.textContent = message;
+  notice.classList.add("show");
+  clearTimeout(noticeTimeout);
+  noticeTimeout = setTimeout(()=>notice.classList.remove("show"),4200);
+}
+function setBusy(value){
+  busy=value;
+  document.querySelectorAll("button[data-action],#startAll,#stopAll").forEach(button=>{
+    button.disabled=value||button.dataset.disabled==="true";
+  });
+}
+function render(bots){
+  const active=bots.filter(b=>b.started).length;
+  document.getElementById("total").textContent=bots.length;
+  document.getElementById("online").textContent=active;
+  document.getElementById("offline").textContent=bots.length-active;
+  document.getElementById("playing").textContent=bots.filter(b=>!!b.current).length;
+  document.getElementById("updated").textContent="UPDATED "+stamp();
+  grid.innerHTML=bots.length?bots.map((b,i)=>{
+    const on=!!b.started;
+    const vol=Math.max(0,Math.min(100,Number(b.volume)||0));
+    return `<article class="card" style="animation-delay:${Math.min(i,8)*60}ms">
+      <div class="card-visual"><span class="card-number">NHQM / ${String(i+1).padStart(2,"0")}</span></div>
+      <div class="card-body">
+        <div class="card-title"><h3>${esc(b.name||"Unnamed Bot")}</h3><span class="status ${on?"":"offline"}"><span class="dot"></span>${on?"ONLINE":"OFFLINE"}</span></div>
+        <div class="song"><strong>${esc(b.current||"No song playing")}</strong><small>${esc(b.status||"Idle")}</small></div>
+        <div class="details">
+          <div class="detail"><span>VOICE</span><span>${esc(b.voiceChannelId||"Not set")}</span></div>
+          <div class="detail"><span>TEXT</span><span>${esc(b.textChannelId||"Not set")}</span></div>
+          <div class="detail"><span>QUEUE</span><span>${esc(b.queue??0)} TRACKS</span></div>
+          <div class="detail"><span>REPEAT</span><span>${b.repeat?"ON":"OFF"}</span></div>
+        </div>
+        <div class="track"><span style="width:${vol}%"></span></div>
+        <div class="volume"><span>VOLUME</span><span>${vol}%</span></div>
+        <div class="card-actions">
+          <button class="btn" data-action="start" data-id="${esc(b.id)}" data-disabled="${on}" ${busy||on?"disabled":""}>▶ START</button>
+          <button class="btn dark" data-action="stop" data-id="${esc(b.id)}" data-disabled="${!on}" ${busy||!on?"disabled":""}>■ STOP</button>
+        </div>
+      </div>
+    </article>`;
+  }).join(""):'<div class="empty">No bots configured.</div>';
+}
+async function refresh(){
+  if(busy)return;
+  try{
+    const r=await fetch("/api/status",{cache:"no-store"});
+    if(!r.ok)throw Error("HTTP "+r.status);
+    const bots=await r.json();
+    if(!Array.isArray(bots))throw Error("Invalid status response");
+    render(bots);
+  }catch(e){
+    document.getElementById("updated").textContent="CONNECTION ERROR";
+    console.error("NHQM status:",e);
+  }
+}
+async function action(name,id){
+  if(busy)return;
+  setBusy(true);
+  try{
+    const r=await fetch("/api/"+name,{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(id===undefined?{}:{id})
+    });
+    const result=await r.json();
+    if(!r.ok)throw Error(result.error||"HTTP "+r.status);
+    const failures=(result.results||[]).filter(x=>!x.ok);
+    if(failures.length)showNotice(failures.map(x=>`Bot ${x.id}: ${x.error||"Failed"}`).join(" | "));
+    else showNotice("Operation completed successfully.");
+  }catch(e){
+    showNotice("Error: "+e.message);
+    console.error("NHQM action:",e);
+  }finally{
+    busy=false;
+    await refresh();
+    setBusy(false);
+  }
+}
+document.getElementById("startAll").addEventListener("click",()=>action("start-all"));
+document.getElementById("stopAll").addEventListener("click",()=>action("stop-all"));
+grid.addEventListener("click",e=>{
+  const button=e.target.closest("button[data-action]");
+  if(!button||button.disabled)return;
+  const id=Number(button.dataset.id);
+  if(!Number.isInteger(id)||id<0)return;
+  action(button.dataset.action,id);
+});
+refresh();
+setInterval(refresh,3500);
+</script>
+</body>
+</html>

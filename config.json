@@ -1,0 +1,20 @@
+{
+  "ServerId": "",
+  "dashboard": { "host": "", "port": 3000 },
+  "bots": [
+    {
+      "name": "",
+      "token": "",
+      "voiceChannelId": "",
+      "textChannelId": "",
+      "volume": 100
+    },
+    {
+      "name": "",
+      "token": "",
+      "voiceChannelId": "",
+      "textChannelId": "",
+      "volume": 100
+    }
+  ]
+}

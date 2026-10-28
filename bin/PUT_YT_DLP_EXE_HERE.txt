@@ -1,0 +1,2 @@
+Download yt-dlp.exe from https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe and put it here.
+Optional: put ffmpeg.exe here too.
